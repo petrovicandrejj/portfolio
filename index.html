@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andrej Petrović | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: #07070c;
+    color: white;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 20% 20%, #7c3aed, transparent 40%),
+                radial-gradient(circle at 80% 80%, #2563eb, transparent 40%);
+    opacity: 0.2;
+    animation: move 10s infinite alternate;
+}
+
+@keyframes move {
+    from { transform: translate(-10%, -10%); }
+    to { transform: translate(10%, 10%); }
+}
+
+.hero-content {
+    z-index: 2;
+}
+
+h1 {
+    font-size: 64px;
+    font-weight: 800;
+}
+
+.subtitle {
+    color: #aaa;
+    margin-top: 10px;
+}
+
+/* SECTIONS */
+section {
+    padding: 90px 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+/* CARDS */
+.card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* VIDEO */
+.card video {
+    width: 100%;
+    border-radius: 12px;
+}
+
+/* CONTACT */
+.contact {
+    color: #aaa;
+    line-height: 1.8;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+    <div class="hero-content">
+        <h1>Andrej Petrović</h1>
+        <div class="subtitle">Video Editor • Content Manager • UGC Creator</div>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section>
+    <h2>About Me</h2>
+
+    <div class="card">
+        I am a video editor and content creator focused on short-form and long-form content for social media and ads.
+
+        <br><br>
+
+        I have 1 year of experience working with smaller clients, where I learned editing, storytelling and content strategy in real projects.
+
+        <br><br>
+
+        After that, I joined <b>Talas Akademija</b> where I spent 3 months improving advanced editing, pacing, retention and creative storytelling.
+
+        <br><br>
+
+        I work mainly in Adobe Premiere Pro and After Effects, creating high-quality content for brands and creators.
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section>
+    <h2>What I Do</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Short Form</h3>
+            TikTok, Reels, Shorts, UGC Ads
+        </div>
+
+        <div class="card">
+            <h3>Long Form</h3>
+            YouTube videos, podcasts, interviews
+        </div>
+
+        <div class="card">
+            <h3>Social Media</h3>
+            Content strategy & growth
+        </div>
+
+    </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section>
+
+<h2>Portfolio</h2>
+
+<h3 style="margin-bottom:20px;">Short Form Content</h3>
+
+<div class="grid">
+
+    <div class="card">
+        <video controls>
+            <source src="videos/short1.mp4" type="video/mp4">
+        </video>
+
+        <p style="margin-top:15px;">
+            Short Form Edit
+        </p>
+    </div>
+
+    <div class="card">
+        <video controls>
+            <source src="videos/podcast.mp4" type="video/mp4">
+        </video>
+
+        <p style="margin-top:15px;">
+            Podcast Edit
+        </p>
+    </div>
+
+</div>
+
+<h3 style="margin-top:60px; margin-bottom:20px;">
+Sound Design
+</h3>
+
+<div class="card">
+
+    <video controls style="width:100%;">
+        <source src="videos/sounddesign.mp4" type="video/mp4">
+    </video>
+
+    <p style="margin-top:15px;">
+        Sound Design Exercise
+    </p>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+<section>
+    <h2>Contact</h2>
+
+    <div class="card contact">
+        Instagram: @petrovicandrejj <br>
+        Email: petrovicandrej2203@gmail.com <br>
+       
+    </div>
+</section>
+
+</body>
+</html>
