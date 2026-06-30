@@ -18,9 +18,10 @@
 body {
     background: #07070c;
     color: white;
+    overflow-x: hidden;
 }
 
-/* HERO */
+/* ===== HERO ===== */
 .hero {
     height: 100vh;
     display: flex;
@@ -28,47 +29,106 @@ body {
     align-items: center;
     text-align: center;
     position: relative;
+    flex-direction: column;
 }
 
 .hero::before {
     content: "";
     position: absolute;
-    width: 200%;
-    height: 200%;
+    width: 250%;
+    height: 250%;
     background: radial-gradient(circle at 20% 20%, #7c3aed, transparent 40%),
-                radial-gradient(circle at 80% 80%, #2563eb, transparent 40%);
-    opacity: 0.2;
-    animation: move 10s infinite alternate;
+                radial-gradient(circle at 80% 80%, #2563eb, transparent 40%),
+                radial-gradient(circle at 50% 50%, #ff00cc, transparent 60%);
+    opacity: 0.25;
+    animation: move 12s infinite alternate;
+    filter: blur(40px);
 }
 
 @keyframes move {
-    from { transform: translate(-10%, -10%); }
-    to { transform: translate(10%, 10%); }
+    from { transform: translate(-10%, -10%) scale(1); }
+    to { transform: translate(10%, 10%) scale(1.1); }
 }
 
 .hero-content {
     z-index: 2;
+    text-align: center;
+    animation: fadeIn 1.2s ease forwards;
+}
+
+/* ===== TEXT ANIM ===== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 h1 {
     font-size: 64px;
     font-weight: 800;
+    animation: fadeIn 1.4s ease forwards;
 }
 
 .subtitle {
     color: #aaa;
     margin-top: 10px;
+    animation: fadeIn 1.6s ease forwards;
 }
 
-/* SECTIONS */
+/* PROFILE */
+.profile-pic {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #7c3aed;
+    margin-bottom: 20px;
+    transition: 0.4s;
+    animation: fadeIn 1s ease forwards;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #7c3aed;
+}
+
+/* TOOLS */
+.tools {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.tools img {
+    width: 40px;
+    height: 40px;
+    filter: invert(1);
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.tools img:hover {
+    transform: scale(1.3);
+    opacity: 1;
+}
+
+/* ===== SECTIONS ===== */
 section {
-    padding: 90px 20px;
+    padding: 100px 20px;
     max-width: 1100px;
     margin: auto;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.8s ease;
+}
+
+section.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 h2 {
-    font-size: 32px;
+    font-size: 34px;
     margin-bottom: 20px;
 }
 
@@ -79,6 +139,13 @@ h2 {
     border-radius: 16px;
     padding: 20px;
     margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #7c3aed;
+    box-shadow: 0 10px 30px rgba(124,58,237,0.2);
 }
 
 .grid {
@@ -91,12 +158,27 @@ h2 {
 .card video {
     width: 100%;
     border-radius: 12px;
+    transition: 0.3s;
+}
+
+.card video:hover {
+    transform: scale(1.02);
 }
 
 /* CONTACT */
 .contact {
     color: #aaa;
     line-height: 1.8;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #7c3aed;
+    border-radius: 10px;
 }
 </style>
 </head>
@@ -105,10 +187,21 @@ h2 {
 
 <!-- HERO -->
 <div class="hero">
+
     <div class="hero-content">
+
+        <img src="images/profile.jpg" class="profile-pic">
+
         <h1>Andrej Petrović</h1>
         <div class="subtitle">Video Editor • Content Manager • UGC Creator</div>
+
+        <div class="tools">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/premierepro/premierepro-original.svg">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/aftereffects/aftereffects-original.svg">
+        </div>
+
     </div>
+
 </div>
 
 <!-- ABOUT -->
@@ -117,18 +210,12 @@ h2 {
 
     <div class="card">
         I am a video editor and content creator focused on short-form and long-form content for social media and ads.
-
         <br><br>
-
-        I have 1 year of experience working with smaller clients, where I learned editing, storytelling and content strategy in real projects.
-
+        I have 1 year of experience working with smaller clients, where I learned editing, storytelling and content strategy.
         <br><br>
-
-        After that, I joined <b>Talas Akademija</b> where I spent 3 months improving advanced editing, pacing, retention and creative storytelling.
-
+        After that, I joined <b>Talas Akademija</b> for 3 months of advanced editing training.
         <br><br>
-
-        I work mainly in Adobe Premiere Pro and After Effects, creating high-quality content for brands and creators.
+        I work in Premiere Pro and After Effects.
     </div>
 </section>
 
@@ -140,17 +227,17 @@ h2 {
 
         <div class="card">
             <h3>Short Form</h3>
-            TikTok, Reels, Shorts, UGC Ads
+            TikTok, Reels, Shorts
         </div>
 
         <div class="card">
             <h3>Long Form</h3>
-            YouTube videos, podcasts, interviews
+            YouTube, Podcasts
         </div>
 
         <div class="card">
-            <h3>Social Media</h3>
-            Content strategy & growth
+            <h3>Content Strategy</h3>
+            Growth & viral editing
         </div>
 
     </div>
@@ -167,40 +254,27 @@ h2 {
 
     <div class="card">
         <video controls>
-            <source src="videos/short1.mp4" type="video/mp4">
+            <source src="videos/short1.mp4">
         </video>
-
-        <p style="margin-top:15px;">
-            Short Form Edit
-        </p>
+        <p>Short Form Edit</p>
     </div>
 
     <div class="card">
         <video controls>
-            <source src="videos/podcast.mp4" type="video/mp4">
+            <source src="videos/podcast.mp4">
         </video>
-
-        <p style="margin-top:15px;">
-            Podcast Edit
-        </p>
+        <p>Podcast Edit</p>
     </div>
 
 </div>
 
-<h3 style="margin-top:60px; margin-bottom:20px;">
-Sound Design
-</h3>
+<h3 style="margin-top:50px;">Sound Design</h3>
 
 <div class="card">
-
-    <video controls style="width:100%;">
-        <source src="videos/sounddesign.mp4" type="video/mp4">
+    <video controls>
+        <source src="videos/sounddesign.mp4">
     </video>
-
-    <p style="margin-top:15px;">
-        Sound Design Exercise
-    </p>
-
+    <p>Sound Design Exercise</p>
 </div>
 
 </section>
@@ -211,10 +285,24 @@ Sound Design
 
     <div class="card contact">
         Instagram: @petrovicandrejj <br>
-        Email: petrovicandrej2203@gmail.com <br>
-       
+        Email: petrovicandrej2203@gmail.com
     </div>
 </section>
+
+<script>
+// scroll reveal animacije
+const sections = document.querySelectorAll("section");
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    });
+});
+
+sections.forEach(sec => observer.observe(sec));
+</script>
 
 </body>
 </html>
